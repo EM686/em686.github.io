@@ -1,858 +1,541 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>WUM</title>
-    <meta name="keywords" content="WUM">
-    <meta name="description" content="WUM。">
-    <meta itemprop="name" property="og:title" content="WUM" />
-    <meta itemprop="description" property="og:description" content="WUM" />
-    <meta name="renderer" content="webkit"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link rel="shortcut icon" href="./asset/logo.png">
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
-    <link rel="stylesheet" href="./asset/style.css?v=WUM">
-</head>
-<body class="article">
-<style>
-* {
-    margin:0;
-    padding:0
-}
-*, :after, :before {
-    box-sizing:border-box
-}
-body, html {
-    /*height:100%*/
-}
-html {
-    -webkit-tap-highlight-color:transparent;
-    -ms-text-size-adjust:100%;
-    -webkit-text-size-adjust:100%;
-    line-height:1.6;
-    font-size:14px;
-    -webkit-tap-highlight-color:transparent
-}
-input, button, textarea, select {
-    outline:none;
-    resize:none;
-    border:none;
-    -webkit-appearance:none;
-    appearance:none;
-    background:0 0;
-    color:inherit;
-    font:inherit
-}
-body, input, textarea, select, button {
-    -webkit-touch-callout:none;
-    -webkit-font-smoothing:antialiased;
-    font-family:-apple-system-font, BlinkMacSystemFont, helvetica neue, pingfang sc, hiragino sans gb, microsoft yahei ui, microsoft yahei, Arial, sans-serif
-}
-body {
-    color:#282828;
-    background:#fff
-}
-img {
-    border:none
-}
-a {
-    text-decoration:none;
-    color:#282828;
-    outline:none
-}
-a:hover {
-    text-decoration:none;
-    color:#f78ca0
-}
-.wrapper {
-    width:100%
-}
-.content {
-    width:100%;
-    max-width:1000px;
-    margin:0 auto
-}
-.page-title {
-    font-size:38px;
-    font-weight:700;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-.page-title img {
-    width: 260px;
-}
-.box, .box::after, .box::before {
-    box-shadow:0 7px 21px rgba(149, 157, 165, .22)
-}
-.box {
-    padding:25px;
-    background:#fff;
-    border-radius:18px;
-    margin:10px -25px 50px;
-    position:relative
-}
-.box::after, .box::before {
-    height:100%;
-    position:absolute;
-    border-radius:18px
-}
-.box::after {
-    content:'';
-    bottom:-13px;
-    left:16px;
-    width:calc(100% - 32px);
-    z-index:-2
-}
-.box::before {
-    content:'';
-    bottom:-6px;
-    left:6px;
-    width:calc(100% - 12px);
-    z-index:-1;
-    background:#fff
-}
-.btn-no {
-    background: rgba(0, 0, 0, .28);
-    cursor: not-allowed;
-}
-.btn-important {
-    background: #f78ca0;
-    background: linear-gradient(90deg, #FBC5CF, #f78ca0)!important;
-}
-.btn-large {
-    padding: 0 15px;
-    line-height: 40px;
-    font-size: 14px;
-    display: inline-block;
-    border-radius: 10px;
-}
-.shadow-drop {
-    /*box-shadow: 0 10px 12px -4px rgb(249 116 143 / 40%);*/
-    box-shadow: 0 3px 12px rgb(249 116 143 / 18%);
-}
-.popup-domain {
-    margin:35px 0 25px;
-    background:#f3f5f7;
-    text-align:center;
-    position:relative;
-    border-radius:10px;
-    max-width: 888px;
-    padding:10px 0
-}
-.popup-domain:nth-child(2) {
-    margin-top:45px
-}
-.popup-domain a {
-    color:#0c0d0f
-}
-.popup-domain:hover {
-    background:#ffeae5
-}
-.popup-domain:hover a {
-    text-decoration:underline
-}
-.popup-domain span {
-    position: absolute;
-    left: 0;
-    top: -25px;
-    font-size: 13px;
-    background: #ffddd5;
-    border-radius: 6px 6px 0 0;
-    padding: 0 8px;
-    height: 40px;
-    line-height: 25px;
-    color: #e50914;
-    z-index: -1;
-}
-.popup-domain strong {
-    font-size:18px
-}
-.scroll-domain-prompt {
-    margin: 30px 0 -30px 0;
-    font-size:0
-}
-.module-domain-prompt {
-    border:2px solid #e9ecef;
-    padding:10px 20px;
-    border-radius:8px;
-    position:relative;
-    display:inline-block;
-    margin:5px 5px 30px;
-    width:calc(50% - 10px)
-}
-.module-domain-title {
-    position:absolute;
-    left:5px;
-    top:-12px;
-    font-size:14px;
-    padding:0 10px;
-    background:#fff;
-    color:#757575
-}
-.module-domain-main {
-    font-size:16px;
-    font-weight:700;
-    text-align:center
-}
-.module-domain-main em {
-    color:#dbdee2;
-    padding:0 15px
-}
-.article #header::after, .library #header::after {
-    height:238%
-}
-.article main {
-    position:relative
-}
-.article main::after {
-    content:'';
-    position:absolute;
-    width:100%;
-    height:200px;
-    background:#eaedf1;
-    z-index:-3;
-    bottom:-100px
-}
-.article .box {
-    margin-bottom:100px;
-    padding-bottom:100px
-}
-.article-content {
-    padding:0 260px 0 30px;
-    z-index:2;
-    position:relative
-}
-.article-content h2 {
-    font-size:23px;
-    font-weight:700;
-    margin:25px 0;
-    position:relative
-}
-.article-content h3 {
-    font-size:20px;
-    font-weight:700;
-    margin:18px 0
-}
-.article-content h2::after {
-    content:'';
-    position:absolute;
-    bottom:-10px;
-    width:38px;
-    left:1px;
-    height:4px;
-    background:#f78ca0;
-    background:linear-gradient(90deg, #FBC5CF, #f78ca0)!important;
-    border-radius:50px
-}
-.article-content p {
-    font-size:16px;
-    margin:20px 0;
-    line-height:1.88
-}
-.article-content hr {
-    height:2px;
-    background:#e3e4e5;
-    border:none;
-    margin:40px 0
-}
-.article-content a {
-    color:#f78ca0
-}
-.article-content b {
-    position:relative
-}
-.article-content b::after {
-    content:'';
-    position:absolute;
-    width:100%;
-    height:10px;
-    background:#FBC5CF;
-    z-index:-3;
-    left:0;
-    bottom:-3px
-}
-.article-content em {
-    margin:0 5px
-}
-.article-content li {
-    font-size:16px;
-    list-style:circle;
-    line-height:1.88
-}
-.article-content i {
-    margin:0 5px;
-    color:#8f8f8f
-}
-.article-content img {
-    border-radius:10px;
-    border:1px solid rgba(0, 0, 0, .1)
-}
-.article-content .article-imglist {
-    margin:10px -5px 0
-}
-.article-imglist img {
-    margin:5px
-}
-.article-imglist .big-img {
-    margin-bottom:-15px
-}
-.article-bg, .article-bg01 {
-    background:url(article.png) no-repeat;
-    position:absolute;
-    z-index:1;
-    right:0;
-    width:100%;
-    height:130px;
-    background-size:contain
-}
-.article-bg {
-    background-position:right;
-    border-radius:0 18px 0 0;
-    top:0
-}
-.article-bg01 {
-    background-position:right -60px;
-    bottom:0;
-    transform:rotate(180deg)
-}
-.article-content .article-btn {
-    display:inline-block!important;
-    border-radius:8px;
-    font-weight:900;
-    color:#fff;
-    margin-right:10px;
-    padding:0 25px
-}
-.article-btn i {
-    color:#fff;
-    font-size:16px;
-    vertical-align:-2px;
-    margin:0 5px 0 0
-}
-@media(max-width:1789px) {
-    .content {
-        max-width:950px
-    }
-}
-@media(max-width:1549px) {
-    .content {
-        max-width:900px
-    }
-}
-@media(max-width:1329px) {
-    .content {
-        max-width:800px
-    }
-}
-@media(max-width:1239px) {
-    .content {
-        max-width:90%;
-        padding:0 50px
-    }
-    .article-content {
-        padding:0 50px
-    }
-    .article-bg {
-        height:80px
-    }
-}
-@media(max-width:899px) {
-    .page-title img {
-        width: 200px;
-    }
-    .content {
-        padding:0 0px
-    }
-    .box {
-        margin:10px -20px 50px;
-        padding:30px 20px 20px;
-        border-radius:0 0 18px 18px
-    }
-    .article-content {
-        padding:0 15px
-    }
-    .article-content li, .article-content p {
-        font-size:16px
-    }
-    .article-content p img {
-        max-width:45%!important
-    }
-    .article-content p img.big-img {
-        max-width:92%!important
-    }
-    .article-bg {
-        height:80px;
-        border-radius:0
-    }
-    .article main::after {
-        bottom:-70px
-    }
-    .article .box {
-        margin-bottom:70px
-    }
-}
-@media(max-width:559px) {
-    .box {
-        margin:10px -15px -15px;
-        padding:15px
-    }
-    .box::before {
-        bottom:-4px
-    }
-    .box::after {
-        bottom:-9px
-    }
-    .page-title {
-        font-size:26px;
-        margin-right:0
-    }
-    .article-content {
-        padding:0 10px 0 18px
-    }
-    .article-content h2 {
-        font-size:18px
-    }
-    .article-content h3 {
-        font-size:16px
-    }
-    .article-content img {
-        border-radius:5px
-    }
-    .article-content .article-btn {
-        padding:0;
-        width:calc(50% - 10px);
-        text-align:center
-    }
-    .article-content .article-btn:last-child {
-        margin-right:0
-    }
-    .scroll-box.scroll-domain-prompt {
-        padding: 2px 0px 0px;
-    }
-    .module-domain-prompt:last-child {
-        margin-left:0
-    }
-    .module-domain-prompt {
-        padding:12px 16px;
-        width:max-content;
-        margin-bottom:20px
-    }
-    .module-domain-title {
-        font-size:12px;
-        top:-12px
-    }
-    .module-domain-main em {
-        padding:0 10px
-    }
-    .scroll-box {
-        /*margin: 0 -15px;*/
-        padding: 0 15px 15px;
-        overflow-y: auto;
-        webkit-overflow-scrolling: touch
-    }
-    .scroll-content {
-        display: inline-flex
-    }
-    .scroll-box::-webkit-scrollbar {
-        display: none
-    }
-}
-/* start */
- .my-face {
-    animation: my-face 5s infinite ease-in-out;
-    color: #00f1ff;
-    display: inline-block;
-    margin: 0 5px;
-}
-@-webkit-keyframes my-face {
-    2%, 24%, 80% {
-        -webkit-transform: translate(0, 1.5px) rotate(1.5deg);
-        transform: translate(0, 1.5px) rotate(1.5deg)
-    }
-    4%, 68%, 98% {
-        -webkit-transform: translate(0, -1.5px) rotate(-.5deg);
-        transform: translate(0, -1.5px) rotate(-.5deg)
-    }
-    38%, 6% {
-        -webkit-transform: translate(0, 1.5px) rotate(-1.5deg);
-        transform: translate(0, 1.5px) rotate(-1.5deg)
-    }
-    8%, 86% {
-        -webkit-transform: translate(0, -1.5px) rotate(-1.5deg);
-        transform: translate(0, -1.5px) rotate(-1.5deg)
-    }
-    10%, 72% {
-        -webkit-transform: translate(0, 2.5px) rotate(1.5deg);
-        transform: translate(0, 2.5px) rotate(1.5deg)
-    }
-    12%, 64%, 78%, 96% {
-        -webkit-transform: translate(0, -.5px) rotate(1.5deg);
-        transform: translate(0, -.5px) rotate(1.5deg)
-    }
-    14%, 54% {
-        -webkit-transform: translate(0, -1.5px) rotate(1.5deg);
-        transform: translate(0, -1.5px) rotate(1.5deg)
-    }
-    16% {
-        -webkit-transform: translate(0, -.5px) rotate(-1.5deg);
-        transform: translate(0, -.5px) rotate(-1.5deg)
-    }
-    18%, 22% {
-        -webkit-transform: translate(0, .5px) rotate(-1.5deg);
-        transform: translate(0, .5px) rotate(-1.5deg)
-    }
-    20%, 36%, 46% {
-        -webkit-transform: translate(0, -1.5px) rotate(2.5deg);
-        transform: translate(0, -1.5px) rotate(2.5deg)
-    }
-    26%, 50% {
-        -webkit-transform: translate(0, .5px) rotate(.5deg);
-        transform: translate(0, .5px) rotate(.5deg)
-    }
-    28% {
-        -webkit-transform: translate(0, .5px) rotate(1.5deg);
-        transform: translate(0, .5px) rotate(1.5deg)
-    }
-    30%, 40%, 62%, 76%, 88% {
-        -webkit-transform: translate(0, -.5px) rotate(2.5deg);
-        transform: translate(0, -.5px) rotate(2.5deg)
-    }
-    32%, 34%, 66% {
-        -webkit-transform: translate(0, 1.5px) rotate(-.5deg);
-        transform: translate(0, 1.5px) rotate(-.5deg)
-    }
-    42% {
-        -webkit-transform: translate(0, 2.5px) rotate(-1.5deg);
-        transform: translate(0, 2.5px) rotate(-1.5deg)
-    }
-    44%, 70% {
-        -webkit-transform: translate(0, 1.5px) rotate(.5deg);
-        transform: translate(0, 1.5px) rotate(.5deg)
-    }
-    48%, 74%, 82% {
-        -webkit-transform: translate(0, -.5px) rotate(.5deg);
-        transform: translate(0, -.5px) rotate(.5deg)
-    }
-    52%, 56%, 60% {
-        -webkit-transform: translate(0, 2.5px) rotate(2.5deg);
-        transform: translate(0, 2.5px) rotate(2.5deg)
-    }
-    58% {
-        -webkit-transform: translate(0, .5px) rotate(2.5deg);
-        transform: translate(0, .5px) rotate(2.5deg)
-    }
-    84% {
-        -webkit-transform: translate(0, 1.5px) rotate(2.5deg);
-        transform: translate(0, 1.5px) rotate(2.5deg)
-    }
-    90% {
-        -webkit-transform: translate(0, 2.5px) rotate(-.5deg);
-        transform: translate(0, 2.5px) rotate(-.5deg)
-    }
-    92% {
-        -webkit-transform: translate(0, .5px) rotate(-.5deg);
-        transform: translate(0, .5px) rotate(-.5deg)
-    }
-    94% {
-        -webkit-transform: translate(0, 2.5px) rotate(.5deg);
-        transform: translate(0, 2.5px) rotate(.5deg)
-    }
-    0%, 100% {
-        -webkit-transform: translate(0, 0) rotate(0);
-        transform: translate(0, 0) rotate(0)
-    }
-}
-@keyframes my-face {
-    2%, 24%, 80% {
-        -webkit-transform: translate(0, 1.5px) rotate(1.5deg);
-        transform: translate(0, 1.5px) rotate(1.5deg)
-    }
-    4%, 68%, 98% {
-        -webkit-transform: translate(0, -1.5px) rotate(-.5deg);
-        transform: translate(0, -1.5px) rotate(-.5deg)
-    }
-    38%, 6% {
-        -webkit-transform: translate(0, 1.5px) rotate(-1.5deg);
-        transform: translate(0, 1.5px) rotate(-1.5deg)
-    }
-    8%, 86% {
-        -webkit-transform: translate(0, -1.5px) rotate(-1.5deg);
-        transform: translate(0, -1.5px) rotate(-1.5deg)
-    }
-    10%, 72% {
-        -webkit-transform: translate(0, 2.5px) rotate(1.5deg);
-        transform: translate(0, 2.5px) rotate(1.5deg)
-    }
-    12%, 64%, 78%, 96% {
-        -webkit-transform: translate(0, -.5px) rotate(1.5deg);
-        transform: translate(0, -.5px) rotate(1.5deg)
-    }
-    14%, 54% {
-        -webkit-transform: translate(0, -1.5px) rotate(1.5deg);
-        transform: translate(0, -1.5px) rotate(1.5deg)
-    }
-    16% {
-        -webkit-transform: translate(0, -.5px) rotate(-1.5deg);
-        transform: translate(0, -.5px) rotate(-1.5deg)
-    }
-    18%, 22% {
-        -webkit-transform: translate(0, .5px) rotate(-1.5deg);
-        transform: translate(0, .5px) rotate(-1.5deg)
-    }
-    20%, 36%, 46% {
-        -webkit-transform: translate(0, -1.5px) rotate(2.5deg);
-        transform: translate(0, -1.5px) rotate(2.5deg)
-    }
-    26%, 50% {
-        -webkit-transform: translate(0, .5px) rotate(.5deg);
-        transform: translate(0, .5px) rotate(.5deg)
-    }
-    28% {
-        -webkit-transform: translate(0, .5px) rotate(1.5deg);
-        transform: translate(0, .5px) rotate(1.5deg)
-    }
-    30%, 40%, 62%, 76%, 88% {
-        -webkit-transform: translate(0, -.5px) rotate(2.5deg);
-        transform: translate(0, -.5px) rotate(2.5deg)
-    }
-    32%, 34%, 66% {
-        -webkit-transform: translate(0, 1.5px) rotate(-.5deg);
-        transform: translate(0, 1.5px) rotate(-.5deg)
-    }
-    42% {
-        -webkit-transform: translate(0, 2.5px) rotate(-1.5deg);
-        transform: translate(0, 2.5px) rotate(-1.5deg)
-    }
-    44%, 70% {
-        -webkit-transform: translate(0, 1.5px) rotate(.5deg);
-        transform: translate(0, 1.5px) rotate(.5deg)
-    }
-    48%, 74%, 82% {
-        -webkit-transform: translate(0, -.5px) rotate(.5deg);
-        transform: translate(0, -.5px) rotate(.5deg)
-    }
-    52%, 56%, 60% {
-        -webkit-transform: translate(0, 2.5px) rotate(2.5deg);
-        transform: translate(0, 2.5px) rotate(2.5deg)
-    }
-    58% {
-        -webkit-transform: translate(0, .5px) rotate(2.5deg);
-        transform: translate(0, .5px) rotate(2.5deg)
-    }
-    84% {
-        -webkit-transform: translate(0, 1.5px) rotate(2.5deg);
-        transform: translate(0, 1.5px) rotate(2.5deg)
-    }
-    90% {
-        -webkit-transform: translate(0, 2.5px) rotate(-.5deg);
-        transform: translate(0, 2.5px) rotate(-.5deg)
-    }
-    92% {
-        -webkit-transform: translate(0, .5px) rotate(-.5deg);
-        transform: translate(0, .5px) rotate(-.5deg)
-    }
-    94% {
-        -webkit-transform: translate(0, 2.5px) rotate(.5deg);
-        transform: translate(0, 2.5px) rotate(.5deg)
-    }
-    0%, 100% {
-        -webkit-transform: translate(0, 0) rotate(0);
-        transform: translate(0, 0) rotate(0)
-    }
-}
-/* end */
-/*底部导航*/
-@media (max-width: 800px){.footwaveline{display: none;}}
-</style>
-<main id="main" class="wrapper">
-    <div class="content">
-        <div class="box">
-            <div class="article-content" style="margin-bottom: -50px;">
-                <h2 id="siteurl" style="margin-bottom: 60px;"><a href="#siteurl">无名小铺</a></h2>
-		<ul class="speedlist">
-			<p class="popup-domain">
-				<a href="https://www.101555club.cn//links/1A9D2429" target="_blank" class="mdui-shadow-3"><strong>一号店铺</strong></a>
-				<span class="ms1" id="lineMs0">测速中</span>
-			</p> 
-		</ul>
-		<!--<ul class="speedlist">
-			<p class="popup-domain">
-				<a href="https://shop.947ka.com/links/04F9AFA9" target="_blank" class="mdui-shadow-3"><strong>二号店铺</strong></a>
-				<span class="ms1" id="lineMs1">测速中</span>
-			</p> 
-		</ul>-->
-		<ul class="speedlist">
-			<p class="popup-domain">
-				<a href="https://www.showdoc.com.cn/p/71bb3673d9541bd3a9192c4d9104915d" target="_blank" class="mdui-shadow-3"><strong>每日推荐</strong></a>
-				<span class="ms1" id="lineMs1">测速中</span>
-			</p> 
-		</ul>
-                <!-- <ul style="margin: 30px 0;">
-                    <li><em><b>顾辞团队公告</b></em>：为防止失联和查收重要通知，请亲们务必收藏此发布页！</li>
-                    <!--<li><em><b>OVO通知</b></em>：【服务器维护中···请稍后重试~】</li>-->
-                
-                <h2 id="intro"><a href="#intro">通知公告：2024年8月7日</a></h2>
-                <p style="font-size: 16px;"> 水水 少量加货</p>
-             
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网剧搜索与播放</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --border-radius: 8px;
+        }
 
-                <h2 id="domain"><a href="#domain">黑黑  手机页面左滑显示更多</a></h2>
-                <div class="scroll-box scroll-domain-prompt">
-                    <div class="scroll-content">
-                        
-                       
-                        <!--<div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://shop.947ka.com/liebiao/B00FAA3DC39C07EF" target="_blank">CF白号2</a>
-                            </div>
-                        </div>-->
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://www.101555club.cn//liebiao/70EE6BC549E03140" target="_blank">水水租号</a>
-                            </div>
-                        </div>
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://w.xznw2.com/d/136990" target="_blank">水水售后</a>
-                            </div>
-                        </div>
-						<!-- <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://shop.947ka.com/liebiao/422A5850EA4FBCCF" target="_blank">老头租号</a>
-                            </div>
-                        </div>
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://w.baihongniao.com/index/yhgt?ifxck=1&appid=11079&yzm=a24a28tda3&zskf=1988" target="_blank">老头售后</a>
-                            </div>
-                        </div>-->
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://www.101555club.cn//liebiao/9217671E63F187AF" target="_blank">饼干租号</a>
-                            </div>
-                        </div>
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://w.xznw2.com/d/d313231" target="_blank">饼干售后</a>
-                            </div>
-                        </div> 
-			    <!-- <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://www.101555club.cn//liebiao/09DA92D6EDF43306" target="_blank">贤圣租号</a>
-                            </div>
-                        </div>
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://w.baihongniao.com/aa/2?appid=14892&yzm=f3f3da2atv&zy=1" target="_blank">贤圣售后</a>
-                            </div>
-			</div>-->
-				
-                     <div class="module-domain-prompt">
-                            <div class="module-domain-title">WM</div>
-                            <div class="module-domain-main">
-                                <a href="https://www.101555club.cn//liebiao/990B9EEFA32A9C40" target="_blank">CF白号</a>
-                            </div>
-                        </div>
-							 
-                    </div>
-                </div>
-				<h2 id="domain"><a href="#domain">疑难解答 手机页面左滑显示更多</a></h2>
-				  <div class="scroll-box scroll-domain-prompt">
-                    <div class="scroll-content">
-                        
-                        <div class="module-domain-prompt">
-                            <div class="module-domain-title">疑难解答</div>
-                            <div class="module-domain-main">
-                                <a href="https://www.showdoc.com.cn/p/f190e6dbca45dab19eab219b5ed67fdd" target="_blank">如何查找游戏目录</a>
-                            </div>
-                        </div>
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">疑难解答</div>
-                            <div class="module-domain-main">
-                                <a href="https://www.showdoc.com.cn/p/8b3f6c683881ac38a831dac833d43da3" target="_blank">如何进行售后</a>
-                            </div>
-                        </div>
-						 <div class="module-domain-prompt">
-                            <div class="module-domain-title">疑难解答</div>
-                            <div class="module-domain-main">
-                                <a href="https://www.showdoc.com.cn/p/9f22d9866c383adc2cedb7b64285c623" target="_blank">如何查询所购买的订单</a>
-                            </div>
-                        </div>
-						</div>
-						</div>
-                <p style="margin-top: 10px;font-size: 16px;">
-                    <br><b>没有百分百不封的科技 只是时间问题 </b>
-					<br><b>网站任何科技不要使用大号 小号娱乐即可</b>
-                </p>
-                <br>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-color);
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        #player {
+            flex: 1;
+            min-width: 0;
+            background: #000;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+        }
+
+        #player video {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 90vh;
+        }
+
+        .container {
+            width: 400px;
+            flex-shrink: 0;
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #searchQuery {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #searchQuery:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            background: white;
+            font-size: 14px;
+        }
+
+        select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        #selectedTitleDisplay {
+            margin: 15px 0;
+            padding: 10px;
+            background: var(--secondary-color);
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            justify-content: center;
+        }
+
+        #speedControl {
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--secondary-color);
+            border-radius: var(--border-radius);
+        }
+
+        #speedControl label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #speedControlButtons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #speedRange {
+            flex: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border-radius: 3px;
+        }
+
+        #speedRange::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        #speedValue {
+            min-width: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #customContextMenu {
+            display: none;
+            position: fixed;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        #customContextMenu button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 8px 12px;
+            background: none;
+            color: var(--text-color);
+            border: none;
+            border-radius: 4px;
+            margin: 2px 0;
+        }
+
+        #customContextMenu button:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            #player {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div id="player">
+            <video controls></video>
+        </div>
+
+        <div class="container" id="controlContainer">
+            <input type="text" id="searchQuery" placeholder="搜索短剧..." />
+            <button onclick="searchShortFilm()">搜索</button>
+
+            <select id="resultList" size="8" onchange="loadEpisodes(); updateSelectedVideoTitle()">
+                <option value="" disabled selected>选择短剧</option>
+            </select>
+
+            <select id="episodeList" size="8" onchange="updateSelectedEpisode(); playSelected();">
+                <option value="" disabled selected>选择剧集</option>
+            </select>
+
+            <div id="selectedTitleDisplay">暂无选择剧</div>
+
+            <div class="button-group">
+                <button onclick="playPrev()">上一集</button>
+                <button onclick="playSelected()">播放</button>
+                <button onclick="playNext()">下一集</button>
             </div>
-            <div class="article-bg"></div>
-            <div class="article-bg01"></div>
+
+            <div id="speedControl">
+                <label for="speedRange">播放速度</label>
+                <div id="speedControlButtons">
+                    <button id="decreaseSpeed">-</button>
+                    <input type="range" id="speedRange" min="0.5" max="2.0" step="0.1" value="1.5" onchange="updateSpeed()" />
+                    <button id="increaseSpeed">+</button>
+                    <span id="speedValue">1.5x</span>
+                </div>
+            </div>
+
+            <div id="selectedInfo" style="display: none;">
+                <span id="selectedTitle"></span>
+                <span id="selectedUrl"></span>
+            </div>
         </div>
     </div>
-</main>
+
+    <div id="customContextMenu">
+        <button onclick="showEpisodeList()">显示/隐藏控制面板</button>
+        <button onclick="playPrev()">上一集</button>
+        <button onclick="playNext()">下一集</button>
+        <button onclick="refreshPage()">刷新页面</button>
+    </div>
+
     <script>
-        var tim=1;
-setInterval("tim++",10);
-var autourl=new Array();
-for(i=0;i<=6;i++){
-autourl[i]=$('.speedlist p').eq(i).find('a').attr("href");
-}
-function auto(url){
-	var str=tim;
-	console.log(str);
-	if(url==autourl[0]){
-		$('#lineMs0').html(str+'ms')
-	}
-	if(url==autourl[1]){
-		$('#lineMs1').html(str+'ms')
-	}
-	if(url==autourl[2]){
-		$('#lineMs2').html(str+'ms')
-	}
-	if(url==autourl[3]){
-		$('#lineMs3').html(str+'ms')
-	}
-	if(url==autourl[4]){
-		$('#lineMs4').html(str+'ms')
-	}
-	if(url==autourl[5]){
-		$('#lineMs5').html(str+'ms')
-	}
-	if(url==autourl[6]){
-		$('#lineMs6').html(str+'ms')
-	}
-}
-function run(){
-	for(var span=0;span<autourl.length;span++){
-		document.write("<img src="+autourl[span]+"/"+Math.random()+" width=1 height=1 onerror=auto('"+autourl[span]+"') style='display:none'>");
-	}
-}
-run()
+        let selectedSpeed = 1.5;
+        let currentEpisodeIndex = -1;
+        let episodes = [];
+        let video = document.querySelector('#player video');
+
+        // 添加调试日志
+        function log(message) {
+            console.log(`[Debug] ${message}`);
+        }
+
+        window.onload = function() {
+            log('页面加载完成');
+            const savedQuery = localStorage.getItem('searchQuery');
+            if (savedQuery) {
+                document.getElementById('searchQuery').value = savedQuery;
+            }
+        
+            const savedVideoId = localStorage.getItem('selectedVideoId');
+            if (savedVideoId) {
+                document.getElementById('resultList').value = savedVideoId;
+                loadEpisodes();
+                updateSelectedVideoTitle();
+            }
+        
+            const savedEpisodeIndex = localStorage.getItem('currentEpisodeIndex');
+            if (savedEpisodeIndex) {
+                document.getElementById('episodeList').selectedIndex = savedEpisodeIndex;
+                updateSelectedEpisode();
+                playSelected(); // 自动播放保存的剧集
+            }
+
+            // 设置默认播放速度
+            video.playbackRate = selectedSpeed;
+        };
+
+        // 修改搜索功能
+        function searchShortFilm() {
+            log('开始搜索');
+            const query = document.getElementById('searchQuery').value.trim();
+            if (!query) {
+                alert('请输入搜索关键词');
+                return;
+            }
+
+            const apiUrl = `https://www.hhlqilongzhu.cn/api/duanju_fanqie.php?name=${encodeURIComponent(query)}`;
+            log(`搜索URL: ${apiUrl}`);
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    log('搜索结果:', data);
+                    const resultList = document.getElementById('resultList');
+                    resultList.innerHTML = '';
+                    if (data && data.data && data.data.length > 0) {
+                        data.data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.book_id;
+                            option.textContent = item.title;
+                            resultList.appendChild(option);
+                        });
+                        // 自动选择第一个结果
+                        resultList.selectedIndex = 0;
+                        loadEpisodes();
+                        updateSelectedVideoTitle();
+                    } else {
+                        const option = document.createElement('option');
+                        option.textContent = '未找到相关内容';
+                        resultList.appendChild(option);
+                    }
+                })
+                .catch(error => {
+                    log('搜索错误:', error);
+                    console.error('搜索失败:', error);
+                });
+        }
+
+        // 修改加载剧集功能
+        function loadEpisodes() {
+            const selectedVideoId = document.getElementById('resultList').value;
+            log(`加载剧集，ID: ${selectedVideoId}`);
+            if (!selectedVideoId) return;
+
+            const apiUrl = `https://www.hhlqilongzhu.cn/api/duanju_fanqie.php?book_id=${encodeURIComponent(selectedVideoId)}`;
+            log(`加载剧集URL: ${apiUrl}`);
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    log('剧集数据:', data);
+                    const episodeList = document.getElementById('episodeList');
+                    episodeList.innerHTML = '';
+                    episodes = data.data || [];
+
+                    if (episodes.length > 0) {
+                        episodes.forEach((item, index) => {
+                            const option = document.createElement('option');
+                            option.value = item.url_mp4;
+                            option.textContent = `第${index + 1}集 ${item.title}`;
+                            episodeList.appendChild(option);
+                        });
+
+                        // 自动选择第一集
+                        episodeList.selectedIndex = 0;
+                        updateSelectedEpisode();
+                        playSelected(); // 自动播放第一集
+                    } else {
+                        const option = document.createElement('option');
+                        option.textContent = '暂无剧集';
+                        episodeList.appendChild(option);
+                    }
+                })
+                .catch(error => {
+                    log('加载剧集错误:', error);
+                    console.error('加载失败:', error);
+                });
+        }
+
+        // 修改播放功能
+        function playSelected() {
+            log('尝试播放选中的剧集');
+            if (currentEpisodeIndex >= 0 && currentEpisodeIndex < episodes.length) {
+                const url = episodes[currentEpisodeIndex].url_mp4;
+                log(`播放URL: ${url}`);
+                playVideo(url);
+            } else {
+                log('没有选中的剧集可播放');
+            }
+        }
+
+        function playVideo(url) {
+            log(`开始播放视频: ${url}`);
+            if (!video) {
+                log('创建新的video元素');
+                video = document.createElement('video');
+                video.controls = true;
+                video.style.width = '100%';
+                video.style.height = '100%';
+                video.onended = function() {
+                    log('视频播放结束，自动播放下一集');
+                    playNext();
+                };
+                const player = document.getElementById('player');
+                player.innerHTML = '';
+                player.appendChild(video);
+            }
+
+            try {
+                video.src = url;
+                video.load(); // 确保重新加载视频
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        log('视频开始播放');
+                        video.playbackRate = selectedSpeed;
+                    }).catch(error => {
+                        log('播放出错:', error);
+                        console.error('播放错误:', error);
+                    });
+                }
+            } catch (error) {
+                log('设置视频源时出错:', error);
+                console.error('视频加载错误:', error);
+            }
+        }
+
+        function updateSelectedEpisode() {
+            log('更新选中的剧集');
+            const episodeList = document.getElementById('episodeList');
+            const selectedOption = episodeList.options[episodeList.selectedIndex];
+
+            if (selectedOption) {
+                const title = selectedOption.textContent;
+                const url = selectedOption.value;
+                document.getElementById('selectedTitle').textContent = title;
+                document.getElementById('selectedUrl').textContent = url;
+                currentEpisodeIndex = episodeList.selectedIndex;
+                localStorage.setItem('currentEpisodeIndex', currentEpisodeIndex);
+                log(`选中剧集: ${title}, URL: ${url}`);
+            }
+        }
+
+        // 其他功能保持不变
+        function updateSelectedVideoTitle() {
+            const resultList = document.getElementById('resultList');
+            const selectedOption = resultList.options[resultList.selectedIndex];
+
+            if (selectedOption) {
+                document.getElementById('selectedTitleDisplay').textContent = selectedOption.textContent;
+            } else {
+                document.getElementById('selectedTitleDisplay').textContent = '暂无选择';
+            }
+        }
+
+        function playPrev() {
+            if (currentEpisodeIndex > 0) {
+                currentEpisodeIndex--;
+                document.getElementById('episodeList').selectedIndex = currentEpisodeIndex;
+                updateSelectedEpisode();
+                playSelected();
+            }
+        }
+
+        function playNext() {
+            if (currentEpisodeIndex < episodes.length - 1) {
+                currentEpisodeIndex++;
+                document.getElementById('episodeList').selectedIndex = currentEpisodeIndex;
+                updateSelectedEpisode();
+                playSelected();
+            }
+        }
+
+        // 速度控制
+        document.getElementById('increaseSpeed').addEventListener('click', () => adjustSpeed(0.1));
+        document.getElementById('decreaseSpeed').addEventListener('click', () => adjustSpeed(-0.1));
+
+        function adjustSpeed(delta) {
+            if ((delta > 0 && selectedSpeed < 2.0) || (delta < 0 && selectedSpeed > 0.5)) {
+                selectedSpeed = Math.round((selectedSpeed + delta) * 10) / 10;
+                updateSpeed();
+            }
+        }
+
+        function updateSpeed() {
+            document.getElementById('speedRange').value = selectedSpeed;
+            document.getElementById('speedValue').textContent = selectedSpeed.toFixed(1) + 'x';
+            if (video) {
+                video.playbackRate = selectedSpeed;
+            }
+        }
+
+        // 界面控制
+        function showEpisodeList() {
+            document.getElementById('controlContainer').classList.toggle('hidden');
+        }
+
+        function refreshPage() {
+            location.reload();
+        }
+
+        // 更新标题
+        function updateTitle() {
+            const episodeList = document.getElementById('episodeList');
+            const selectedOption = episodeList.options[episodeList.selectedIndex];
+            document.title = selectedOption ? selectedOption.textContent : '网剧播放器';
+        }
+
+        // 右键菜单
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            const customMenu = document.getElementById('customContextMenu');
+            customMenu.style.display = 'block';
+            customMenu.style.left = `${e.pageX}px`;
+            customMenu.style.top = `${e.pageY}px`;
+        });
+
+        document.addEventListener('click', function() {
+            document.getElementById('customContextMenu').style.display = 'none';
+        });
+
+        // 搜索框输入监听
+        document.getElementById('searchQuery').addEventListener('input', function() {
+            localStorage.setItem('searchQuery', this.value);
+        });
     </script>
-    <script src="./asset/main.js?v=WUM"></script>
-	<script>
-    window.$crisp = [];
-    window.CRISP_WEBSITE_ID = "fa6a667b-43eb-4ded-8175-b4717dca438f";
-    (function () {
-        d = document;
-        s = d.createElement("script");
-        s.src = "https://client.crisp.chat/l.js";
-        s.async = 1;
-        d.getElementsByTagName("head")[0].appendChild(s);
-    })();
-</script>
+</body>
+</html>
